@@ -1,0 +1,38 @@
+.HomePage{
+    display: flex;
+    flex-direction: column;
+
+    .input{
+        margin:2rem 0 3rem;
+        input{
+            padding: 0.2rem 1rem;
+            border-radius: 15px;
+            width: 95%;
+            height: 3.5rem;
+            border: none;
+            outline: none;
+            font-size: 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+        }
+    }
+
+
+    .links{
+        display: grid;
+        min-height: 100vh;
+        grid-template-columns: minmax(45px,1fr) minmax(45px,1fr);
+        grid-auto-rows: 140px;
+        grid-gap: 2rem;
+
+        .customlink{
+            &.wide{
+                grid-column: span 2 / auto;
+            }
+            &.tall{
+                grid-row: span 2 / auto;
+            }
+        }
+    }
+
+
+}
