@@ -10,6 +10,9 @@ html{
 
 body{
   background: #422680;
+  @media (min-width:600px){
+    display: none;
+  }
 }
 
 .header.nav{
@@ -19,4 +22,21 @@ body{
   text-align: left;
   font-family: 'Montserrat', sans-serif;
   font-size: 3.2rem;
+}
+
+.page{
+  width: 95%;
+  margin: 1rem auto 0;
+}
+
+.customlink{
+  text-decoration: none;
+  color: white;
+  // Default color
+  background: #AE5D68; 
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
