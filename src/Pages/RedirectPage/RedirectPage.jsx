@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SpinnerBike from '../../components/SpinnerBike';
 import './RedirectPage.scss';
 
 function RedirectPage({match}) {
@@ -11,7 +12,8 @@ function RedirectPage({match}) {
 
   return (
     <div className="RedirectPage page">
-      REDIRECTING
+      <SpinnerBike></SpinnerBike>
+      <h1>Redirecting now</h1>
     </div>
   );
 }
