@@ -6,4 +6,26 @@
     min-height: 90vh;
     font-size: 2.5rem;
     color: white;
+
+
+    #wheel_back,#wheel_front{
+        animation: wheel 4s linear infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+    }
+
+    @keyframes wheel {
+        from{
+            transform: rotateZ(0deg);
+        }
+        to{
+            transform: rotateZ(360deg);
+        }
+    }
+
+
+
+
+
+
 }
