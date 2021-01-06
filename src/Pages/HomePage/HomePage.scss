@@ -1,18 +1,36 @@
 .HomePage{
     display: flex;
     flex-direction: column;
-
+    
     .input{
         margin: 5rem 0 6rem;
-        input{
-            padding: 0.2rem 1rem;
-            border-radius: 15px;
-            width: 95%;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-items: center;
+
+
+        input,button{
+            font-size: 1.6rem;
+            font-family: 'Montserrat', sans-serif;
+            padding: 0.2rem 0.5rem;
             height: 3.5rem;
             border: none;
             outline: none;
-            font-size: 1.6rem;
-            font-family: 'Montserrat', sans-serif;
+        }
+
+        input{
+            padding-left: 1rem;
+            width: 95%;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+
+        }
+        button{
+            width: 35%;
+            background: red;
+            color: white;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
         }
     }
 
