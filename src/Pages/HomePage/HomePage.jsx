@@ -1,14 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './HomePage.scss';
 import CustomLink from '../../components/CustomLink'
 
 function HomePage() {
+
+  const [link,setLink] = useState('');
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    console.log('sending', link);
+    // Code to write new entry in db. Also dont forget to make the conversion here
+  }
+  const handleChange = (event) => {
+    event.preventDefault();
+    setLink(event.target.value);
+  }
+
   return (
     <div className="HomePage page">
  
-        <div className='input'>
-            <input type='text'></input>
-        </div>
+        <form className='input' onSubmit={handleSubmit}>
+            <input type='text' onChange={handleChange}/>
+            <button>Shrink</button>
+        </form>
 
         <div className="links">
             <CustomLink path='mylinks' title='My Links' background='#F54925'></CustomLink>
