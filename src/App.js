@@ -1,7 +1,7 @@
 import './App.scss';
-import { Route, Switch } from 'react-router-dom'
-import HomePage from './Pages/HomePage/HomePage'
-
+import { Route, Switch } from 'react-router-dom';
+import HomePage from './Pages/HomePage/HomePage';
+import RedirectPage from './Pages/RedirectPage/RedirectPage';
 import Header from './components/Header';
 
 
@@ -12,6 +12,7 @@ function App() {
       <Header className='nav'>muga.ly</Header>
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
+        <Route path='/l/:linkID' component={RedirectPage}></Route>
         <Route path='*'> Page not found or not yet developed, come back later</Route>
       </Switch>
 
