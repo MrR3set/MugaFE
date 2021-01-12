@@ -12,6 +12,7 @@ import 'firebase/firestore';
 firebase.initializeApp({
   // this key is safe to expose, you wont get nothing by copying them - 
   // https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public + direct contact to firebase support
+  // Alternatively you could do this https://medium.com/@devesu/how-to-secure-your-firebase-project-even-when-your-api-key-is-publicly-available-a462a2a58843
     apiKey: "AIzaSyDfeI8Pp3PtOxSsl-8SD39whRli9RWcs-I",
     authDomain: "mugaly-f1fc4.firebaseapp.com",
     projectId: "mugaly-f1fc4",
