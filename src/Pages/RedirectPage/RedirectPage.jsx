@@ -7,6 +7,7 @@ function RedirectPage({match}) {
   useEffect(()=>{
     console.log('redirecting to ', match.params.linkID);
     // Add content to redirect him to the page
+    
   },[match.params.linkID])
 
 

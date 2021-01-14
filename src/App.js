@@ -25,18 +25,19 @@ firebase.initializeApp({
 const firestore = firebase.firestore();
 
 
+
 function App() {
+
   return (
     <div className="App">
       <Header className='nav'>muga.ly</Header>
       <Switch>
-        <Route exact path="/" component={HomePage}></Route>
+        <Route exact path="/">
+          <HomePage firestore={firestore}/>
+        </Route>
         <Route path='/l/:linkID' component={RedirectPage}></Route>
         <Route path='*'> Page not found or not yet developed, come back later</Route>
       </Switch>
-
-
-
     </div>
   );
 }
