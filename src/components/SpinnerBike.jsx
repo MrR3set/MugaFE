@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 function SpinnerBike() {
     return (
         <svg width="376" height="188" viewBox="0 0 376 188" fill="none" xmlns="http://www.w3.org/2000/svg">
