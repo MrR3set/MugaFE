@@ -1,17 +1,26 @@
 import React, { useState } from 'react';
 import './HomePage.scss';
-import CustomLink from '../../components/CustomLink'
+import CustomLink from '../../components/CustomLink';
+import firebase from 'firebase/app';
 
-function HomePage() {
+
+
+function HomePage({firestore}) {
 
   const [link,setLink] = useState('');
+  const linkRef = firestore.collection('links');
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
+    
     event.preventDefault();
-    console.log('sending', link);
-    // Code to write new entry in db. Also dont forget to make the conversion here
+    await linkRef.add({
+      link:link,
+      createdAt:firebase.firestore.FieldValue.serverTimestamp(),
+      shortLink:'asacasc'
+    })
   }
+
   const handleChange = (event) => {
     event.preventDefault();
     setLink(event.target.value);
