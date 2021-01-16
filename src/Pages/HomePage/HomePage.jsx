@@ -1,34 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import './HomePage.scss';
 import CustomLink from '../../components/CustomLink';
 import firebase from 'firebase/app';
+import shortid from 'shortid';
+import Copy from '../../components/Copy';
 
 
 
-function HomePage({firestore}) {
-
+function HomePage({linkRef}) {
+  
+  console.log(linkRef);
   const [link,setLink] = useState('');
-  const linkRef = firestore.collection('links');
-
+  const [shortLink,setShortLink] = useState(null);
+  // const linkRef = firestore.collection('links');
 
   const handleSubmit = async(event) => {
-    
     event.preventDefault();
+    const id = shortid.generate();
+    // Write link
     await linkRef.add({
       link:link,
       createdAt:firebase.firestore.FieldValue.serverTimestamp(),
-      shortLink:'asacasc'
-    })
+      shortLink:id
+    });
+    // Read link
+    await linkRef.where('shortLink', '==', id).get().then((snapshot)=>{
+      setShortLink(`${window.location.origin}/l/${snapshot.docs[0].data().shortLink}`);
+    });
   }
+
 
   const handleChange = (event) => {
     event.preventDefault();
     setLink(event.target.value);
   }
 
+  const copyLink = () =>{
+    const el = document.createElement('textarea');
+    el.value = shortLink;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  }
+
   return (
     <div className="HomePage page">
  
+        <div className="shortLink" onClick={copyLink}>
+          {shortLink?<h1 className='link'>{shortLink}</h1>:<h1 className='title'>Make URLs Great Again</h1>}
+          {shortLink?<Copy/>:null}
+        </div>
+
+    
         <form className='input' onSubmit={handleSubmit}>
             <input type='text' onChange={handleChange}/>
             <button>Shrink</button>
