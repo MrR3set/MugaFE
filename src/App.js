@@ -3,10 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import HomePage from './Pages/HomePage/HomePage';
 import RedirectPage from './Pages/RedirectPage/RedirectPage';
 import Header from './components/Header';
-
-
 import firebase from 'firebase/app';
-import {useCollectionData} from 'react-firebase-hooks/firestore';
 import 'firebase/firestore';
 
 firebase.initializeApp({
@@ -23,8 +20,7 @@ firebase.initializeApp({
 })
 
 const firestore = firebase.firestore();
-
-
+const linkRef = firestore.collection('links');
 
 function App() {
 
@@ -33,9 +29,11 @@ function App() {
       <Header className='nav'>muga.ly</Header>
       <Switch>
         <Route exact path="/">
-          <HomePage firestore={firestore}/>
+          <HomePage linkRef={linkRef}/>
         </Route>
-        <Route path='/l/:linkID' component={RedirectPage}></Route>
+        <Route path='/l/:linkID'>
+          <RedirectPage linkRef={linkRef}/>
+        </Route>
         <Route path='*'> Page not found or not yet developed, come back later</Route>
       </Switch>
     </div>
