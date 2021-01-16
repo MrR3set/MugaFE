@@ -1,14 +1,29 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import SpinnerBike from '../../components/SpinnerBike';
 import './RedirectPage.scss';
 
-function RedirectPage({match}) {
+function RedirectPage({linkRef,match}) {
 
-  useEffect(()=>{
-    console.log('redirecting to ', match.params.linkID);
-    // Add content to redirect him to the page
-    
-  },[match.params.linkID])
+  const [link,setLink] = useState(null);
+  const { linkID } = useParams();
+
+  useEffect(async()=>{
+    await linkRef.where('shortLink', '==', linkID).get().then((snapshot)=>{
+      snapshot.docs.forEach(doc=>{
+        setLink(`${window.location.origin}/l/${doc.data().link}`);
+      })
+    });
+
+    console.log('redirecting to', link)
+
+    await delay(5000);
+    window.location.href = link
+
+
+  },[linkID]);
+
+  const delay = ms => new Promise(res=> setTimeout(res,ms));
 
 
   return (
