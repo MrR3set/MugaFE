@@ -7,19 +7,23 @@ function RedirectPage({linkRef,}) {
 
   const { linkID } = useParams();
 
-  useEffect(async()=>{
-    let nlink = ''
-    await linkRef.where('shortLink', '==', linkID).get().then(async(snapshot)=>{
-      if(!snapshot.empty)
-        nlink = snapshot.docs[0].data().link
-      else{
-        await delay(1000);
-        window.location.href = window.location.origin + '/404'
-      }
-    });
-    await delay(5000);
-    window.location.href = nlink
-  },[]);
+  useEffect(()=>{
+
+    const getURL = async() => {
+      let nlink = ''
+      await linkRef.where('shortLink', '==', linkID).get().then(async(snapshot)=>{
+        if(!snapshot.empty)
+          nlink = snapshot.docs[0].data().link
+        else{
+          await delay(1000);
+          window.location.href = window.location.origin + '/404'
+        }
+      });
+      await delay(5000);
+      window.location.href = nlink
+    }
+    getURL()
+  },[linkID,linkRef]);
 
   const delay = ms => new Promise(res=> setTimeout(res,ms));
 
