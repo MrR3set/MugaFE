@@ -5,23 +5,21 @@ import './RedirectPage.scss';
 
 function RedirectPage({linkRef,match}) {
 
-  const [link,setLink] = useState(null);
   const { linkID } = useParams();
 
   useEffect(async()=>{
-    await linkRef.where('shortLink', '==', linkID).get().then((snapshot)=>{
-      snapshot.docs.forEach(doc=>{
-        setLink(`${window.location.origin}/l/${doc.data().link}`);
-      })
+    let nlink = ''
+    await linkRef.where('shortLink', '==', linkID).get().then(async(snapshot)=>{
+      if(!snapshot.empty)
+        nlink = snapshot.docs[0].data().link
+      else{
+        await delay(1000);
+        window.location.href = window.location.origin + '/404'
+      }
     });
-
-    console.log('redirecting to', link)
-
     await delay(5000);
-    window.location.href = link
-
-
-  },[linkID]);
+    window.location.href = nlink
+  },[]);
 
   const delay = ms => new Promise(res=> setTimeout(res,ms));
 
