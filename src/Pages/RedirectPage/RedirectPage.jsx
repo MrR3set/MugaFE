@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import SpinnerBike from '../../components/SpinnerBike';
 import './RedirectPage.scss';
 
-function RedirectPage({linkRef,match}) {
+function RedirectPage({linkRef,}) {
 
   const { linkID } = useParams();
 
