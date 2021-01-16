@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import './HomePage.scss';
 import CustomLink from '../../components/CustomLink';
 import firebase from 'firebase/app';
