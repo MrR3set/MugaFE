@@ -12,7 +12,6 @@ function HomePage({linkRef}) {
   console.log(linkRef);
   const [link,setLink] = useState('');
   const [shortLink,setShortLink] = useState(null);
-  // const linkRef = firestore.collection('links');
 
   const handleSubmit = async(event) => {
     event.preventDefault();
