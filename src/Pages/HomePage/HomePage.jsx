@@ -46,16 +46,18 @@ function HomePage({linkRef}) {
   return (
     <div className="HomePage page">
  
-        <div className="shortLink" onClick={copyLink}>
-          {shortLink?<h1 className='link'>{shortLink}</h1>:<h1 className='title'>Make URLs Great Again</h1>}
-          {shortLink?<Copy/>:null}
-        </div>
+        <div className="content">
+          <div className="shortLink" onClick={copyLink}>
+            {shortLink?<h1 className='link'>{shortLink}</h1>:<h1 className='title'>Make URLs Great Again</h1>}
+            {shortLink?<Copy/>:null}
+          </div>
 
-    
-        <form className='input' onSubmit={handleSubmit}>
-            <input type='text' onChange={handleChange}/>
-            <button>Shrink</button>
-        </form>
+      
+          <form className='input' onSubmit={handleSubmit}>
+              <input type='text' onChange={handleChange}/>
+              <button>Shrink</button>
+          </form>
+        </div>
 
         <div className="links">
             <CustomLink path='mylinks' title='My Links' background='#F54925'></CustomLink>
