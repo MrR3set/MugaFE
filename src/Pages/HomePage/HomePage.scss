@@ -2,85 +2,108 @@
     display: flex;
     flex-direction: column;
     
-    .shortLink{
+    @media (min-width:600px) {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+
+    .content{
+        @media (min-width:600px) {
+            width: 85%;
+            border: 1px solid red;
+        }
+        .shortLink{
         position: relative;
         margin-top: 2rem;
         padding: 1.5rem;
         background: white;
         border-radius: 15px;
         font-size: 1rem;
-        min-height: 8rem;
+            min-height: 8rem;
+
+            @media (min-width:600px) {
+                width: 100%;
+            }
+
+            h1.title{
+                align-self: center;
+            }
+
+            h1.link{
+                align-self: left;
+                width: 100%;
+                font-size: 1.2;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                border: none;
+            }
 
 
-        h1.title{
-            align-self: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            // align-items: left;
+            svg{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                margin: 0.8rem;
+                fill: black;
+            }
         }
 
-        h1.link{
-            align-self: left;
-            width: 100%;
-            font-size: 1.2;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            border: none;
-        }
+
+        .input{
+            margin: 5rem 0 6rem;
+            display: flex;
+            flex-wrap: nowrap;
+            justify-items: center;
 
 
+            input,button{
+                font-size: 1.6rem;
+                font-family: 'Montserrat', sans-serif;
+                padding: 0.2rem 0.5rem;
+                height: 3.5rem;
+                border: none;
+                outline: none;
+            }
 
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        // align-items: left;
-        svg{
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            margin: 0.8rem;
-            fill: black;
-        }
-    }
+            input{
+                padding-left: 1rem;
+                width: 95%;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
 
-
-    .input{
-        margin: 5rem 0 6rem;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-items: center;
-
-
-        input,button{
-            font-size: 1.6rem;
-            font-family: 'Montserrat', sans-serif;
-            padding: 0.2rem 0.5rem;
-            height: 3.5rem;
-            border: none;
-            outline: none;
-        }
-
-        input{
-            padding-left: 1rem;
-            width: 95%;
-            border-top-left-radius: 15px;
-            border-bottom-left-radius: 15px;
-
-        }
-        button{
-            width: 35%;
-            background: red;
-            color: white;
-            border-top-right-radius: 15px;
-            border-bottom-right-radius: 15px;
+            }
+            button{
+                width: 35%;
+                background: red;
+                color: white;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
+            }
         }
     }
 
 
     .links{
         display: grid;
-        min-height: 100vh;
+        height: 100%;
         grid-template-columns: minmax(45px,1fr) minmax(45px,1fr);
         grid-auto-rows: 140px;
         grid-gap: 2rem;
+        @media (min-width:600px) {
+            width: 10%;
+            border: 1px solid blue;
+            order: -1;
+            display: flex;
+            flex-direction: column;
+        }
 
         .customlink{
             &.wide{
@@ -88,6 +111,12 @@
             }
             &.tall{
                 grid-row: span 2 / auto;
+            }
+            @media (min-width:600px) {
+                padding: 1rem;
+                &:last-child{
+                    margin-top: auto;
+                }
             }
         }
     }
