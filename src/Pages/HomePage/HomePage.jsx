@@ -26,6 +26,7 @@ function HomePage({linkRef}) {
     await linkRef.where('shortLink', '==', id).get().then((snapshot)=>{
       setShortLink(`${window.location.origin}/l/${snapshot.docs[0].data().shortLink}`);
     });
+    setShortLink(`${window.location.origin}/l/${id}`);
   }
 
 
@@ -62,8 +63,8 @@ function HomePage({linkRef}) {
         <div className="links">
             <CustomLink path='mylinks' title='My Links' background='#F54925'></CustomLink>
             <CustomLink path='profile' title='Profile' size='tall'></CustomLink>
-            <CustomLink path='signout' title='Sign out' background='#660F56'></CustomLink>
             <CustomLink path='moreinfo' title='More info' size='wide' background='#D1193E'></CustomLink>
+            <CustomLink path='signout' title='Sign out' background='#660F56'></CustomLink>
         </div>
 
 
