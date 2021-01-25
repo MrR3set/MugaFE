@@ -9,7 +9,6 @@ import Copy from '../../components/Copy';
 
 function HomePage({linkRef}) {
   
-  console.log(linkRef);
   const [link,setLink] = useState('');
   const [shortLink,setShortLink] = useState(null);
 
